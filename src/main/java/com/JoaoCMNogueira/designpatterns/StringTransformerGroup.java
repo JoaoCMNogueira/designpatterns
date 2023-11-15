@@ -2,17 +2,14 @@ package com.JoaoCMNogueira.designpatterns;
 
 import java.util.List;
 
-import static java.nio.file.Files.size;
-
-public class StringRecipe {
+public class StringTransformerGroup implements StringTransformer{
 
     private List<StringTransformer> transformers;
-
-    public StringRecipe(List<StringTransformer> transformers){
+    public StringTransformerGroup(List<StringTransformer> transformers){
         this.transformers = transformers;
     }
-
-    public void mix(StringDrink drink){
+    @Override
+    public void execute(StringDrink drink){
         for (StringTransformer transformer: transformers) {
             transformer.execute(drink);
         }

@@ -3,7 +3,7 @@ package com.JoaoCMNogueira.designpatterns;
 public class StringCaseChanger implements StringTransformer{
 
     @Override
-    public String execute(StringDrink drink) {
+    public void execute(StringDrink drink) {
         StringBuilder strdrink = new StringBuilder(drink.getText());
         StringBuilder strRes = new StringBuilder();
         for (int i = 0; i < strdrink.length(); i++){
@@ -14,6 +14,5 @@ public class StringCaseChanger implements StringTransformer{
             }
         }
         drink.setText(String.valueOf(strRes));
-        return null;
     }
 }

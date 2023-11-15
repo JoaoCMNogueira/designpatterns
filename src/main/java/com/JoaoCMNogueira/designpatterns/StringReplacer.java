@@ -7,8 +7,7 @@ public class StringReplacer implements StringTransformer{
         this.oldx = x;
         this.newx = y;
     }
-    public String execute(StringDrink drink) {
+    public void execute(StringDrink drink) {
         drink.setText(drink.getText().replace(oldx, newx));
-        return null;
     }
 }
