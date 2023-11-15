@@ -1,7 +1,9 @@
-import com.JoaoCMNogueira.designpatterns.StringCaseChanger;
-import com.JoaoCMNogueira.designpatterns.StringDrink;
-import com.JoaoCMNogueira.designpatterns.StringInverter;
+import com.JoaoCMNogueira.designpatterns.*;
 import org.junit.jupiter.api.Test;
+
+import java.io.StringReader;
+import java.util.ArrayList;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -29,5 +31,33 @@ public class tests {
         StringCaseChanger cc = new StringCaseChanger();
         cc.execute(drink);
         assertEquals("AbCd", drink.getText());
+    }
+
+    @Test
+    public void stringReplacer(){
+        StringDrink drink = new StringDrink("ABCDABCD");
+        StringReplacer sr = new StringReplacer('A','X');
+        sr.execute(drink);
+        assertEquals("XBCDXBCD",drink.getText());
+    }
+
+    @Test
+    public void stringRecipe(){
+        StringDrink drink = new StringDrink("AbCd-aBcD");
+
+        StringInverter si = new StringInverter();
+        StringCaseChanger cc = new StringCaseChanger();
+        StringReplacer sr = new StringReplacer('A', 'X');
+
+        List<StringTransformer> transformers = new ArrayList<>();
+        transformers.add(si);
+        transformers.add(cc);
+        transformers.add(sr);
+
+        StringRecipe recipe = new StringRecipe(transformers);
+
+        recipe.mix(drink);
+
+        assertEquals("dCbX-DcBa", drink.getText());
     }
 }

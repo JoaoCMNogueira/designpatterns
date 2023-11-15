@@ -1,5 +1,5 @@
 package com.JoaoCMNogueira.designpatterns;
 
 public interface StringTransformer {
-    void execute(StringDrink drink);
+    String execute(StringDrink drink);
 }
